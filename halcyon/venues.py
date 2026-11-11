@@ -101,6 +101,7 @@ class VenueError:
 @dataclass(frozen=True)
 class SearchResult:
     offers: tuple[Offer, ...] = ()
+    total_matches: int = 0
     error: VenueError | None = None
 
 
@@ -171,6 +172,17 @@ class VenueService:
     def venue(self, venue_id: str) -> Venue | None:
         return self._venues.get(venue_id)
 
+    def find_by_name(self, name: str) -> Venue | None:
+        """Exact name match first, then a unique partial match. Case-insensitive."""
+        wanted = " ".join(name.lower().split())
+        if not wanted:
+            return None
+        for venue in self._venues.values():
+            if venue.name.lower() == wanted:
+                return venue
+        partial = [v for v in self._venues.values() if wanted in v.name.lower()]
+        return partial[0] if len(partial) == 1 else None
+
     def search(
         self,
         *,
@@ -183,6 +195,7 @@ class VenueService:
         requirements: Sequence[str] = (),
         preferences: Sequence[str] = (),
         flex_minutes: int | None = None,
+        venue_id: str | None = None,
         limit: int = 3,
     ) -> SearchResult:
         """Find tables for a party.
@@ -191,6 +204,7 @@ class VenueService:
         rank results: venues matching more of them come first, but are never excluded.
         `flex_minutes` limits offers to seatings within that many minutes of `time_hhmm`.
         With no flex, any seating counts and the nearest ones are offered.
+        `venue_id` searches one named venue and explains why it has no table, if it has none.
         """
         self._pause()
         error = self._check_date(on)
@@ -202,11 +216,23 @@ class VenueService:
         if unknown:
             return SearchResult(error=VenueError("unknown_requirement", f"Unknown requirement: {unknown[0]}."))
 
+        if venue_id is not None:
+            named = self._venues.get(venue_id)
+            if named is None:
+                return SearchResult(error=VenueError("unknown_venue", "No venue with that id."))
+            if not named.open_on(on):
+                return SearchResult(error=VenueError("venue_closed", f"{named.name} is closed on {on:%A}s."))
+            if party_size > named.max_party:
+                return SearchResult(error=VenueError("party_too_large", f"{named.name} seats up to {named.max_party}."))
+            limit = 1
+
         target = _minutes(time_hhmm) if time_hhmm else _minutes("19:00")
         areas = [a.lower() for a in neighbourhoods if a]
         ranked: list[tuple[int, int, str, Offer]] = []
         with self._lock:
             for venue in self._venues.values():
+                if venue_id is not None and venue.id != venue_id:
+                    continue
                 if not venue.open_on(on) or party_size > venue.max_party:
                     continue
                 if price_max is not None and venue.price_band > price_max:
@@ -231,7 +257,10 @@ class VenueService:
                 ranked.append((-len(matched), gap, venue.name, offer))
 
         ranked.sort(key=lambda item: item[:3])
-        return SearchResult(offers=tuple(item[3] for item in ranked[:limit]))
+        return SearchResult(
+            offers=tuple(item[3] for item in ranked[:limit]),
+            total_matches=len(ranked),
+        )
 
     def book(
         self,

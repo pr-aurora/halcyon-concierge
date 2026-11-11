@@ -234,6 +234,23 @@ class BookingFlowTests(HarnessMixin, unittest.TestCase):
         self.assertIn(reference, first)
         self.assertIn(reference, messages[-1]["text"])
 
+    def test_moving_a_booking_cancels_then_rebooks_in_one_turn(self) -> None:
+        self.start(ScriptedBrain(
+            book(venue_id="ven-quiet-table", date="2026-11-19", time="18:00", party_size=2, special_requests=None),
+        ))
+        self.member_message("c-move", "book The Quiet Table thurs 6pm for two")
+        self.wait_for_assistant("c-move", 1)
+        reference = self.store.bookings_for_member("member-1", on_or_after="2026-11-01")[0].reference
+        self.brain.entries.extend([
+            Decision(action="cancel_booking", cancel={"booking_ref": reference}),
+            book(venue_id="ven-quiet-table", date="2026-11-19", time="20:00", party_size=2, special_requests=None),
+        ])
+        self.member_message("c-move", "actually make it 8pm")
+        messages = self.wait_for_assistant("c-move", 2)
+        self.assertIn("8pm", messages[-1]["text"])
+        bookings = {b.at_time: b.status for b in self.store.bookings_for_member("member-1", on_or_after="2026-11-01")}
+        self.assertEqual(bookings, {"18:00": "cancelled", "20:00": "confirmed"})
+
     def test_failed_booking_is_visible_to_the_model_on_the_next_step(self) -> None:
         self.start(ScriptedBrain(
             book(venue_id="ven-ember-oak", date="2026-11-19", time="20:00", party_size=4, special_requests=None),
@@ -336,6 +353,20 @@ class VenueServiceTests(unittest.TestCase):
         cornhill = [o for o in result.offers if o.venue.id == "ven-cornhill-kitchen"]
         self.assertEqual(len(cornhill), 1)
         self.assertIn("12:30", cornhill[0].times)
+
+    def test_named_venue_search_reports_why_it_has_no_table(self) -> None:
+        # Ember & Oak is closed on Mondays, so the reason should say so.
+        closed = self.venues.search(on=date(2026, 11, 16), party_size=2, venue_id="ven-ember-oak")
+        self.assertEqual(closed.error.code, "venue_closed")
+        # On an open night the search returns only that venue, even though others match too.
+        open_night = self.venues.search(on=date(2026, 11, 19), party_size=2, venue_id="ven-ember-oak", limit=3)
+        self.assertTrue(all(o.venue.id == "ven-ember-oak" for o in open_night.offers))
+        self.assertIsNone(open_night.error)
+
+    def test_total_matches_counts_results_beyond_the_limit(self) -> None:
+        result = self.venues.search(on=date(2026, 11, 19), party_size=2, limit=1)
+        self.assertEqual(len(result.offers), 1)
+        self.assertGreater(result.total_matches, 1)
 
     def test_neighbourhoods_accept_any_of_several_areas(self) -> None:
         result = self.venues.search(on=date(2026, 11, 19), party_size=2, neighbourhoods=["Marylebone", "Mayfair"],

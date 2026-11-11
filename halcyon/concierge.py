@@ -216,6 +216,12 @@ class Concierge:
         flex = args.get("flex_minutes")
         if flex is not None and not (isinstance(flex, int) and 0 <= flex <= 180):
             flex = None
+        venue_id = None
+        if args.get("venue_name"):
+            named = self._venues.find_by_name(str(args["venue_name"]))
+            if named is None:
+                return _error("unknown_venue", f"There is no venue called {args['venue_name']} on our list.")
+            venue_id = named.id
         result = self._venues.search(
             on=on,
             party_size=party_size,
@@ -226,6 +232,7 @@ class Concierge:
             price_max=args.get("price_max") or None,
             requirements=list(args.get("requirements") or []),
             preferences=list(args.get("preferences") or []),
+            venue_id=venue_id,
         )
         if result.error:
             return _error(result.error.code, result.error.message)
@@ -243,9 +250,19 @@ class Concierge:
             }
             for offer in result.offers
         ]
-        outcome: dict[str, Any] = {"ok": True, "date": on.isoformat(), "options": options}
+        outcome: dict[str, Any] = {
+            "ok": True,
+            "date": on.isoformat(),
+            "options": options,
+            # Lets the model tell "not offered" apart from "not shown because of the limit".
+            "total_matches": result.total_matches,
+        }
         if not options:
-            outcome["note"] = "No venues match these details with a free table."
+            outcome["note"] = (
+                f"{args['venue_name']} has no free table for this party in the window asked for."
+                if venue_id
+                else "No venues match these details with a free table."
+            )
         return outcome
 
     def _book(self, turn: Turn, args: dict[str, Any]) -> dict[str, Any]:
@@ -257,6 +274,12 @@ class Concierge:
             return _error("incomplete_booking", "A venue, date, time and party size are needed.")
         if not isinstance(party_size, int) or party_size < 1:
             return _error("incomplete_booking", "A party size is needed.")
+
+        if self._venues.venue(venue_id) is None:
+            # The model sometimes passes a name where an id belongs. Resolve it rather than fail.
+            named = self._venues.find_by_name(venue_id)
+            if named is not None:
+                venue_id = named.id
 
         existing = self._store.active_booking_at(turn.member_id, venue_id, on.isoformat(), time_hhmm)
         if existing is not None:
@@ -355,7 +378,11 @@ class Concierge:
 
 
 def _confirmation_text(name: str, result: dict[str, Any]) -> str | None:
-    """A plain confirmation for a successful booking or cancellation, or None."""
+    """A plain confirmation for a successful booking, or None.
+
+    Cancellations are not templated. The model keeps going after one, so it can offer a
+    replacement booking in the same turn when a member asks to move a table.
+    """
     if not result.get("ok"):
         return None
     if name == "book_table":
@@ -373,8 +400,6 @@ def _confirmation_text(name: str, result: dict[str, Any]) -> str | None:
         if note:
             text += f" We have passed on your note: {note}."
         return text + " Is there anything else I can arrange?"
-    if name == "cancel_booking":
-        return f"Your booking at {result['venue_name']} ({result['reference']}) is cancelled. Is there anything else I can help with?"
     return None
 
 

@@ -67,6 +67,10 @@ DECISION_SCHEMA: dict[str, Any] = {
                     "items": {"type": "string", "enum": list(TAGS)},
                     "description": "Nice-to-haves such as romantic or quiet. Used only to rank results.",
                 },
+                "venue_name": {
+                    "type": ["string", "null"],
+                    "description": "A specific venue the member named. Only that venue is searched, and the result says why it has no table if it has none.",
+                },
             },
             "required": [
                 "date",
@@ -78,6 +82,7 @@ DECISION_SCHEMA: dict[str, Any] = {
                 "price_max",
                 "requirements",
                 "preferences",
+                "venue_name",
             ],
             "additionalProperties": False,
         },
