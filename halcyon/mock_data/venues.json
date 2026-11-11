@@ -1,0 +1,981 @@
+{
+  "_comment": "Mock venue catalogue for the Halcyon exercise. Fictional venues. price_band: 1 = £, 4 = ££££. Tags are the only values usable as search requirements.",
+  "venues": [
+    {
+      "id": "ven-ember-oak",
+      "name": "Ember & Oak",
+      "cuisine": "British, wood-fired",
+      "neighbourhood": "Marylebone",
+      "price_band": 3,
+      "max_party": 8,
+      "covers_per_slot": 28,
+      "tags": [
+        "romantic",
+        "quiet",
+        "vegetarian",
+        "wine_list",
+        "private_room"
+      ],
+      "days_open": [
+        "tue",
+        "wed",
+        "thu",
+        "fri",
+        "sat",
+        "sun"
+      ],
+      "seatings": [
+        "18:00",
+        "18:30",
+        "19:00",
+        "19:30",
+        "20:00",
+        "20:30",
+        "21:00"
+      ],
+      "summary": "Wood-fired British cooking in a low-lit room with a long wine list."
+    },
+    {
+      "id": "ven-saffron-lane",
+      "name": "Saffron Lane",
+      "cuisine": "Modern Indian, Gujarati vegetarian",
+      "neighbourhood": "Covent Garden",
+      "price_band": 2,
+      "max_party": 10,
+      "covers_per_slot": 40,
+      "tags": [
+        "vegetarian",
+        "vegan",
+        "good_for_groups",
+        "late_kitchen"
+      ],
+      "days_open": [
+        "mon",
+        "tue",
+        "wed",
+        "thu",
+        "fri",
+        "sat",
+        "sun"
+      ],
+      "seatings": [
+        "12:00",
+        "12:30",
+        "13:00",
+        "17:30",
+        "18:00",
+        "18:30",
+        "19:00",
+        "19:30",
+        "20:00",
+        "20:30",
+        "21:30"
+      ],
+      "summary": "Bright, lively dining room with a largely vegetarian menu and generous sharing plates."
+    },
+    {
+      "id": "ven-quiet-table",
+      "name": "The Quiet Table",
+      "cuisine": "Japanese kaiseki, counter",
+      "neighbourhood": "Mayfair",
+      "price_band": 4,
+      "max_party": 4,
+      "covers_per_slot": 8,
+      "tags": [
+        "celebration",
+        "counter_seating",
+        "nut_free",
+        "quiet",
+        "romantic"
+      ],
+      "days_open": [
+        "tue",
+        "wed",
+        "thu",
+        "fri",
+        "sat"
+      ],
+      "seatings": [
+        "18:00",
+        "20:00"
+      ],
+      "summary": "Ten-course seasonal kaiseki at a single counter. Very small, very quiet, booked well ahead."
+    },
+    {
+      "id": "ven-riverbank-kitchen",
+      "name": "Riverbank Kitchen",
+      "cuisine": "Modern European",
+      "neighbourhood": "Southbank",
+      "price_band": 3,
+      "max_party": 12,
+      "covers_per_slot": 60,
+      "tags": [
+        "celebration",
+        "coeliac_safe",
+        "gluten_free",
+        "good_for_groups",
+        "vegetarian"
+      ],
+      "days_open": [
+        "mon",
+        "tue",
+        "wed",
+        "thu",
+        "fri",
+        "sat",
+        "sun"
+      ],
+      "seatings": [
+        "12:00",
+        "12:30",
+        "13:00",
+        "13:30",
+        "18:00",
+        "18:30",
+        "19:00",
+        "19:30",
+        "20:00",
+        "20:30",
+        "21:00"
+      ],
+      "summary": "Large, airy room on the river with a flexible menu and strong gluten-free options."
+    },
+    {
+      "id": "ven-via-lunga",
+      "name": "Via Lunga",
+      "cuisine": "Italian, trattoria",
+      "neighbourhood": "Clerkenwell",
+      "price_band": 2,
+      "max_party": 8,
+      "covers_per_slot": 30,
+      "tags": [
+        "gluten_free",
+        "mild_menu",
+        "romantic",
+        "vegetarian",
+        "wine_list"
+      ],
+      "days_open": [
+        "mon",
+        "tue",
+        "wed",
+        "thu",
+        "fri",
+        "sat"
+      ],
+      "seatings": [
+        "12:30",
+        "13:00",
+        "13:30",
+        "18:00",
+        "18:30",
+        "19:00",
+        "19:30",
+        "20:00",
+        "20:30"
+      ],
+      "summary": "Handmade pasta and a small, well-chosen Italian wine list in a relaxed setting."
+    },
+    {
+      "id": "ven-noor-mezze",
+      "name": "Noor Mezze",
+      "cuisine": "Lebanese",
+      "neighbourhood": "Bloomsbury",
+      "price_band": 2,
+      "max_party": 12,
+      "covers_per_slot": 50,
+      "tags": [
+        "halal",
+        "vegetarian",
+        "vegan",
+        "good_for_groups",
+        "late_kitchen"
+      ],
+      "days_open": [
+        "mon",
+        "tue",
+        "wed",
+        "thu",
+        "fri",
+        "sat",
+        "sun"
+      ],
+      "seatings": [
+        "18:00",
+        "18:30",
+        "19:00",
+        "19:30",
+        "20:00",
+        "20:30",
+        "21:00",
+        "21:30"
+      ],
+      "summary": "Sharing mezze, grills and a late kitchen. Fully halal, with plenty of vegetarian dishes."
+    },
+    {
+      "id": "ven-kaizen-yard",
+      "name": "Kaizen Yard",
+      "cuisine": "Japanese, ramen and izakaya",
+      "neighbourhood": "Soho",
+      "price_band": 1,
+      "max_party": 6,
+      "covers_per_slot": 24,
+      "tags": [
+        "late_kitchen",
+        "counter_seating",
+        "good_for_groups"
+      ],
+      "days_open": [
+        "mon",
+        "tue",
+        "wed",
+        "thu",
+        "fri",
+        "sat",
+        "sun"
+      ],
+      "seatings": [
+        "18:00",
+        "18:30",
+        "19:00",
+        "19:30",
+        "20:00",
+        "20:30",
+        "21:00",
+        "21:30",
+        "22:00"
+      ],
+      "summary": "Casual ramen and small plates, open late, with a busy counter."
+    },
+    {
+      "id": "ven-brassroot",
+      "name": "Brassroot",
+      "cuisine": "Plant-based British",
+      "neighbourhood": "Shoreditch",
+      "price_band": 2,
+      "max_party": 8,
+      "covers_per_slot": 36,
+      "tags": [
+        "coeliac_safe",
+        "gluten_free",
+        "good_for_groups",
+        "vegan",
+        "vegetarian"
+      ],
+      "days_open": [
+        "tue",
+        "wed",
+        "thu",
+        "fri",
+        "sat",
+        "sun"
+      ],
+      "seatings": [
+        "18:00",
+        "18:30",
+        "19:00",
+        "19:30",
+        "20:00",
+        "20:30"
+      ],
+      "summary": "Fully plant-based menu with a relaxed, communal feel and a good cocktail list."
+    },
+    {
+      "id": "ven-garden-room",
+      "name": "The Garden Room",
+      "cuisine": "British, seasonal",
+      "neighbourhood": "Chelsea",
+      "price_band": 3,
+      "max_party": 10,
+      "covers_per_slot": 40,
+      "tags": [
+        "celebration",
+        "gluten_free",
+        "mild_menu",
+        "private_room",
+        "quiet",
+        "vegetarian"
+      ],
+      "days_open": [
+        "tue",
+        "wed",
+        "thu",
+        "fri",
+        "sat",
+        "sun"
+      ],
+      "seatings": [
+        "18:30",
+        "19:00",
+        "19:30",
+        "20:00",
+        "20:30"
+      ],
+      "summary": "Conservatory dining with a private room for up to ten. Popular for birthdays and anniversaries."
+    },
+    {
+      "id": "ven-basil-and-bone",
+      "name": "Basil & Bone",
+      "cuisine": "Italian, neighbourhood trattoria",
+      "neighbourhood": "Notting Hill",
+      "price_band": 2,
+      "max_party": 6,
+      "covers_per_slot": 22,
+      "tags": [
+        "vegetarian",
+        "romantic",
+        "dog_friendly"
+      ],
+      "days_open": [
+        "mon",
+        "tue",
+        "wed",
+        "thu",
+        "fri",
+        "sat",
+        "sun"
+      ],
+      "seatings": [
+        "18:00",
+        "18:30",
+        "19:00",
+        "19:30",
+        "20:00",
+        "20:30"
+      ],
+      "summary": "Neighbourhood trattoria with a candlelit back room and a dog-friendly terrace."
+    },
+    {
+      "id": "ven-marlow-fish",
+      "name": "Marlow Fish",
+      "cuisine": "Seafood, grill",
+      "neighbourhood": "Kensington",
+      "price_band": 4,
+      "max_party": 6,
+      "covers_per_slot": 18,
+      "tags": [
+        "romantic",
+        "wine_list",
+        "celebration",
+        "gluten_free"
+      ],
+      "days_open": [
+        "tue",
+        "wed",
+        "thu",
+        "fri",
+        "sat"
+      ],
+      "seatings": [
+        "18:00",
+        "18:30",
+        "19:00",
+        "19:30",
+        "20:00",
+        "20:30"
+      ],
+      "summary": "Premium seafood grill with an extensive wine list and attentive service."
+    },
+    {
+      "id": "ven-tavola-nord",
+      "name": "Tavola Nord",
+      "cuisine": "Italian, Northern",
+      "neighbourhood": "Hampstead",
+      "price_band": 2,
+      "max_party": 8,
+      "covers_per_slot": 26,
+      "tags": [
+        "vegetarian",
+        "gluten_free",
+        "wine_list",
+        "dog_friendly"
+      ],
+      "days_open": [
+        "tue",
+        "wed",
+        "thu",
+        "fri",
+        "sat",
+        "sun"
+      ],
+      "seatings": [
+        "18:00",
+        "18:30",
+        "19:00",
+        "19:30",
+        "20:00"
+      ],
+      "summary": "Northern Italian cooking with a village-style room and a strong wine list."
+    },
+    {
+      "id": "ven-sumi-yakitori",
+      "name": "Sumi Yakitori",
+      "cuisine": "Japanese, yakitori",
+      "neighbourhood": "Shoreditch",
+      "price_band": 2,
+      "max_party": 6,
+      "covers_per_slot": 20,
+      "tags": [
+        "counter_seating",
+        "late_kitchen",
+        "wine_list"
+      ],
+      "days_open": [
+        "mon",
+        "tue",
+        "wed",
+        "thu",
+        "fri",
+        "sat"
+      ],
+      "seatings": [
+        "18:00",
+        "18:30",
+        "19:00",
+        "19:30",
+        "20:00",
+        "20:30",
+        "21:00",
+        "21:30"
+      ],
+      "summary": "Charcoal-grilled skewers at a long counter, with sake and natural wines."
+    },
+    {
+      "id": "ven-hollow-oak",
+      "name": "Hollow Oak",
+      "cuisine": "British gastropub",
+      "neighbourhood": "Hampstead",
+      "price_band": 2,
+      "max_party": 10,
+      "covers_per_slot": 45,
+      "tags": [
+        "good_for_groups",
+        "vegetarian",
+        "dog_friendly"
+      ],
+      "days_open": [
+        "mon",
+        "tue",
+        "wed",
+        "thu",
+        "fri",
+        "sat",
+        "sun"
+      ],
+      "seatings": [
+        "18:00",
+        "18:30",
+        "19:00",
+        "19:30",
+        "20:00",
+        "20:30",
+        "21:00"
+      ],
+      "summary": "Traditional pub dining with a big fireplace and a relaxed garden room."
+    },
+    {
+      "id": "ven-atelier-lumiere",
+      "name": "Atelier Lumière",
+      "cuisine": "French, tasting menu",
+      "neighbourhood": "Mayfair",
+      "price_band": 4,
+      "max_party": 6,
+      "covers_per_slot": 12,
+      "tags": [
+        "romantic",
+        "quiet",
+        "private_room",
+        "wine_list",
+        "celebration"
+      ],
+      "days_open": [
+        "wed",
+        "thu",
+        "fri",
+        "sat"
+      ],
+      "seatings": [
+        "18:30",
+        "19:30"
+      ],
+      "summary": "Classic French tasting menu in a formal room. Best for special occasions."
+    },
+    {
+      "id": "ven-pier-thirty-four",
+      "name": "Pier Thirty Four",
+      "cuisine": "Seafood, modern British",
+      "neighbourhood": "Southbank",
+      "price_band": 3,
+      "max_party": 14,
+      "covers_per_slot": 55,
+      "tags": [
+        "good_for_groups",
+        "celebration",
+        "gluten_free"
+      ],
+      "days_open": [
+        "tue",
+        "wed",
+        "thu",
+        "fri",
+        "sat",
+        "sun"
+      ],
+      "seatings": [
+        "12:00",
+        "12:30",
+        "13:00",
+        "13:30",
+        "18:00",
+        "18:30",
+        "19:00",
+        "19:30",
+        "20:00",
+        "20:30"
+      ],
+      "summary": "Glass-fronted seafood room with large tables, suited to bigger parties."
+    },
+    {
+      "id": "ven-orchid-bay",
+      "name": "Orchid Bay",
+      "cuisine": "Thai",
+      "neighbourhood": "Kensington",
+      "price_band": 2,
+      "max_party": 8,
+      "covers_per_slot": 34,
+      "tags": [
+        "vegan",
+        "vegetarian",
+        "gluten_free",
+        "good_for_groups"
+      ],
+      "days_open": [
+        "mon",
+        "tue",
+        "wed",
+        "thu",
+        "fri",
+        "sat",
+        "sun"
+      ],
+      "seatings": [
+        "18:00",
+        "18:30",
+        "19:00",
+        "19:30",
+        "20:00",
+        "20:30",
+        "21:00"
+      ],
+      "summary": "Regional Thai dishes with clear vegan and gluten-free labelling on the menu."
+    },
+    {
+      "id": "ven-stone-and-grain",
+      "name": "Stone & Grain",
+      "cuisine": "Scandinavian, small plates",
+      "neighbourhood": "Clerkenwell",
+      "price_band": 2,
+      "max_party": 6,
+      "covers_per_slot": 24,
+      "tags": [
+        "mild_menu",
+        "quiet",
+        "vegan",
+        "vegetarian",
+        "wine_list"
+      ],
+      "days_open": [
+        "tue",
+        "wed",
+        "thu",
+        "fri",
+        "sat"
+      ],
+      "seatings": [
+        "18:00",
+        "18:30",
+        "19:00",
+        "19:30",
+        "20:00",
+        "20:30"
+      ],
+      "summary": "Quiet room with Nordic small plates, rye bread and an all-natural wine list."
+    },
+    {
+      "id": "ven-threadneedle-grill",
+      "name": "Threadneedle Grill",
+      "cuisine": "British steakhouse",
+      "neighbourhood": "Bank",
+      "price_band": 4,
+      "max_party": 12,
+      "covers_per_slot": 40,
+      "tags": [
+        "good_for_groups",
+        "celebration",
+        "gluten_free",
+        "wine_list"
+      ],
+      "days_open": [
+        "mon",
+        "tue",
+        "wed",
+        "thu",
+        "fri"
+      ],
+      "seatings": [
+        "12:00",
+        "12:30",
+        "13:00",
+        "13:30",
+        "14:00",
+        "18:00",
+        "18:30",
+        "19:00",
+        "19:30"
+      ],
+      "summary": "City steakhouse popular for business lunches. Private tables for client groups."
+    },
+    {
+      "id": "ven-leadenhall-table",
+      "name": "Leadenhall Table",
+      "cuisine": "Modern European",
+      "neighbourhood": "City of London",
+      "price_band": 3,
+      "max_party": 8,
+      "covers_per_slot": 30,
+      "tags": [
+        "vegetarian",
+        "good_for_groups",
+        "wine_list",
+        "quiet"
+      ],
+      "days_open": [
+        "mon",
+        "tue",
+        "wed",
+        "thu",
+        "fri"
+      ],
+      "seatings": [
+        "12:00",
+        "12:30",
+        "13:00",
+        "13:30",
+        "18:00",
+        "18:30",
+        "19:00"
+      ],
+      "summary": "Calm, polished room under the Leadenhall Market roof. Quiet enough for a working lunch."
+    },
+    {
+      "id": "ven-cornhill-kitchen",
+      "name": "Cornhill Kitchen",
+      "cuisine": "Plant-forward modern European",
+      "neighbourhood": "Bank",
+      "price_band": 2,
+      "max_party": 10,
+      "covers_per_slot": 40,
+      "tags": [
+        "coeliac_safe",
+        "gluten_free",
+        "good_for_groups",
+        "vegan",
+        "vegetarian"
+      ],
+      "days_open": [
+        "mon",
+        "tue",
+        "wed",
+        "thu",
+        "fri",
+        "sat"
+      ],
+      "seatings": [
+        "12:00",
+        "12:30",
+        "13:00",
+        "13:30",
+        "14:00",
+        "18:00",
+        "18:30",
+        "19:00",
+        "19:30",
+        "20:00"
+      ],
+      "summary": "Fully plant-forward menu with a clearly labelled vegan lunch, close to Bank station."
+    },
+    {
+      "id": "ven-highbury-table",
+      "name": "Highbury Table",
+      "cuisine": "Mediterranean, dedicated gluten-free kitchen",
+      "neighbourhood": "Islington",
+      "price_band": 3,
+      "max_party": 8,
+      "covers_per_slot": 26,
+      "tags": [
+        "coeliac_safe",
+        "gluten_free",
+        "mild_menu",
+        "romantic",
+        "wine_list",
+        "vegetarian"
+      ],
+      "days_open": [
+        "tue",
+        "wed",
+        "thu",
+        "fri",
+        "sat",
+        "sun"
+      ],
+      "seatings": [
+        "18:00",
+        "18:30",
+        "19:00",
+        "19:30",
+        "20:00",
+        "20:30"
+      ],
+      "summary": "Mild Mediterranean menu cooked in a separate gluten-free kitchen. Suited to coeliac guests."
+    },
+    {
+      "id": "ven-angel-larder",
+      "name": "Angel Larder",
+      "cuisine": "British, seasonal",
+      "neighbourhood": "Islington",
+      "price_band": 2,
+      "max_party": 10,
+      "covers_per_slot": 36,
+      "tags": [
+        "nut_free",
+        "mild_menu",
+        "vegetarian",
+        "good_for_groups",
+        "dog_friendly"
+      ],
+      "days_open": [
+        "mon",
+        "tue",
+        "wed",
+        "thu",
+        "fri",
+        "sat",
+        "sun"
+      ],
+      "seatings": [
+        "18:00",
+        "18:30",
+        "19:00",
+        "19:30",
+        "20:00",
+        "20:30",
+        "21:00"
+      ],
+      "summary": "Relaxed neighbourhood dining room with a nut-free kitchen and a mild seasonal menu."
+    },
+    {
+      "id": "ven-charlotte-yard",
+      "name": "Charlotte Yard",
+      "cuisine": "French bistro",
+      "neighbourhood": "Fitzrovia",
+      "price_band": 3,
+      "max_party": 6,
+      "covers_per_slot": 20,
+      "tags": [
+        "romantic",
+        "wine_list",
+        "mild_menu",
+        "quiet"
+      ],
+      "days_open": [
+        "tue",
+        "wed",
+        "thu",
+        "fri",
+        "sat"
+      ],
+      "seatings": [
+        "18:00",
+        "18:30",
+        "19:00",
+        "19:30",
+        "20:00",
+        "20:30"
+      ],
+      "summary": "Small French bistro with a well-judged wine list and a gentle, classic menu."
+    },
+    {
+      "id": "ven-quay-dining",
+      "name": "Quay Dining",
+      "cuisine": "Seafood, modern British",
+      "neighbourhood": "Canary Wharf",
+      "price_band": 3,
+      "max_party": 12,
+      "covers_per_slot": 50,
+      "tags": [
+        "coeliac_safe",
+        "nut_free",
+        "good_for_groups",
+        "wine_list",
+        "celebration"
+      ],
+      "days_open": [
+        "mon",
+        "tue",
+        "wed",
+        "thu",
+        "fri"
+      ],
+      "seatings": [
+        "12:00",
+        "12:30",
+        "13:00",
+        "18:00",
+        "18:30",
+        "19:00",
+        "19:30",
+        "20:00"
+      ],
+      "summary": "Waterside seafood room popular for client dinners. Fully segregated gluten-free preparation."
+    },
+    {
+      "id": "ven-lamplight-islington",
+      "name": "Lamplight",
+      "cuisine": "French bistro, dedicated gluten-free kitchen",
+      "neighbourhood": "Islington",
+      "price_band": 3,
+      "max_party": 6,
+      "covers_per_slot": 18,
+      "tags": [
+        "coeliac_safe",
+        "gluten_free",
+        "romantic",
+        "quiet",
+        "wine_list",
+        "mild_menu"
+      ],
+      "days_open": [
+        "tue",
+        "wed",
+        "thu",
+        "fri",
+        "sat"
+      ],
+      "seatings": [
+        "18:00",
+        "18:30",
+        "19:00",
+        "19:30",
+        "20:00",
+        "20:30"
+      ],
+      "summary": "Small French room with a separate gluten-free kitchen and a gentle, classic menu."
+    },
+    {
+      "id": "ven-camden-kitchen",
+      "name": "Camden Kitchen",
+      "cuisine": "British, sharing plates",
+      "neighbourhood": "Camden Town",
+      "price_band": 2,
+      "max_party": 10,
+      "covers_per_slot": 40,
+      "tags": [
+        "nut_free",
+        "vegetarian",
+        "good_for_groups",
+        "late_kitchen",
+        "dog_friendly"
+      ],
+      "days_open": [
+        "mon",
+        "tue",
+        "wed",
+        "thu",
+        "fri",
+        "sat",
+        "sun"
+      ],
+      "seatings": [
+        "18:00",
+        "18:30",
+        "19:00",
+        "19:30",
+        "20:00",
+        "20:30",
+        "21:00",
+        "21:30"
+      ],
+      "summary": "Lively sharing-plates room with a late kitchen and a nut-free preparation area."
+    },
+    {
+      "id": "ven-granary-grill",
+      "name": "Granary Grill",
+      "cuisine": "British grill",
+      "neighbourhood": "King's Cross",
+      "price_band": 3,
+      "max_party": 12,
+      "covers_per_slot": 45,
+      "tags": [
+        "coeliac_safe",
+        "gluten_free",
+        "good_for_groups",
+        "celebration",
+        "wine_list"
+      ],
+      "days_open": [
+        "mon",
+        "tue",
+        "wed",
+        "thu",
+        "fri",
+        "sat",
+        "sun"
+      ],
+      "seatings": [
+        "12:00",
+        "12:30",
+        "13:00",
+        "18:00",
+        "18:30",
+        "19:00",
+        "19:30",
+        "20:00"
+      ],
+      "summary": "Grill room in a converted granary with a dedicated gluten-free kitchen and large tables."
+    },
+    {
+      "id": "ven-clapham-table",
+      "name": "Clapham Table",
+      "cuisine": "Mediterranean",
+      "neighbourhood": "Clapham",
+      "price_band": 2,
+      "max_party": 8,
+      "covers_per_slot": 30,
+      "tags": [
+        "vegan",
+        "vegetarian",
+        "gluten_free",
+        "good_for_groups",
+        "wine_list"
+      ],
+      "days_open": [
+        "mon",
+        "tue",
+        "wed",
+        "thu",
+        "fri",
+        "sat",
+        "sun"
+      ],
+      "seatings": [
+        "18:00",
+        "18:30",
+        "19:00",
+        "19:30",
+        "20:00",
+        "20:30"
+      ],
+      "summary": "Relaxed Mediterranean room with a clearly marked vegan menu and a long list of wines by the glass."
+    }
+  ]
+}
